@@ -1,0 +1,47 @@
+/* Additional styles for transition */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  margin-right: auto;
+}
+
+.container {
+  text-align: center;
+  position: relative;
+  transition: transform 0.5s;
+}
+
+.logo {
+  width: 250px;
+  height: 250px;
+  position: relative;
+  transition: transform 0.5s;
+}
+
+.search-bar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.5s;
+}
+
+.copyright {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.expanded {
+  transform: translateY(0);
+}
+
+.hidden {
+  display: none;
+}
