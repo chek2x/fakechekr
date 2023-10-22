@@ -8,7 +8,7 @@
     height: 100%;
     min-height: 100%;
     margin: 0;
-    background-color: #ffd8d8;
+    background-color: #fff;
   }
   
   .tb {
@@ -168,4 +168,19 @@
 
 h1 {
     color: #333;
+}
+.dark-mode {
+  background-color: #333;
+  color: #fff; 
+}
+
+#dark-mode-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #fff;
+  color: #333;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
 }
