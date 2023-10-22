@@ -6,6 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
   searchButton.addEventListener("click", function (e) {
     e.preventDefault(); // Prevent form submission
     logo.classList.add("move-left");
-    cover.classList.add("move-up");
+    cover.classList.add("move-up"); 
   });
 });
