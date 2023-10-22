@@ -149,12 +149,12 @@
   }
   
   .move-left {
-    transform: translateX(-900px);
+    transform: translateX(-43vw);
     transition: transform 4s ease-in-out;
   }
   
   #cover.move-up {
-    margin-top: -450px;
+    margin-top: -48vh;
     transition: margin-top 4s ease-in-out;
   }
   body {
