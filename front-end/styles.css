@@ -184,3 +184,28 @@ h1 {
   padding: 5px 10px;
   cursor: pointer;
 }
+
+.error-message {
+  font-size: 70px;
+  color: #ff0000;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  transform: translateY(5px); /* Adjust this value as needed */
+}
+
+/* Add styles for the blink animation */
+.blink {
+  animation: blink-animation 0.5s step-end infinite;
+}
+
+@keyframes blink-animation {
+  0%, 49.9%, 100% {
+    opacity: 0;
+  }
+  50%, 99.9% {
+    opacity: 1;
+  }
+}
