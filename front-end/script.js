@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (searchTerm === "") {
       alert("Input URL to begin the operation");
     } else if (!isValidURL(searchTerm)) {
-      showError("Cannot Identify URL Please Try Again!");
+      showError("Invalid Input, Please Try Again!");
     } else {
       logo.classList.add("move-left");
       cover.classList.add("move-up");
