@@ -30,15 +30,14 @@ from bs4 import BeautifulSoup
 
 # Grab website information
 def webParse(url) -> str:
-    soup = BeautifulSoup(urlopen(url), features="lxml")
-    
+    soup = BeautifulSoup(urlopen(url).read().decode("utf-8"), "html.parser")
+    header = soup.find('h1')
 
     # TODO: Find way to get body using class elements in html and regex for filtering.
     author = soup.find_all('div', attrs={'class' : re.compile(r'.*contributor.*')}, recursive = True)
-    header = soup.find('h1')
 
-    print("Title:", header.text)
-    print(author)
+    print("\nTitle:", header.text, "\n")
+    print("Author/s:", author, "\n")
 
 url = 'https://www.bbc.com/news/world-europe-67008199'
 webParse(url)
