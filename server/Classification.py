@@ -47,8 +47,8 @@ class NaiveBayes:
 
         X_train, X_test, Y_train, Y_test = train_test_split(X_data.toarray(), Y_data, test_size = 0.5, random_state = 5)
         gnb = GaussianNB()
-        # gnb.fit(X_data.toarray(), Y_data)
-        gnb.fit(X_train, Y_train)
+        gnb.fit(X_data.toarray(), Y_data)
+        # gnb.fit(X_train, Y_train)
         # Y_pred = gnb.predict(X_test)
 
         # Sample Test
