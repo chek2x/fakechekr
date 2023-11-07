@@ -10,13 +10,13 @@ from nltk.tokenize import word_tokenize
 
 # TODO: Find a way to use information for GaussianNB classification
 class WebsitePreprocess:
-    alpha_pattern = re.compile(r'[A-Za-z]+')
+    alphanumeric_pattern = re.compile(r'[A-Za-z0-9]+')
     stop_words = set(stopwords.words('english'))
 
     # Preprocess text
     def textCleaner(text):
         words = word_tokenize(text)
-        words = [word for word in words if WebsitePreprocess.alpha_pattern.match(word)]
+        words = [word for word in words if WebsitePreprocess.alphanumeric_pattern.match(word)]
         words = [word for word in words if word.lower() not in WebsitePreprocess.stop_words]
         return ' '.join(words)
 
@@ -49,41 +49,30 @@ class WebsitePreprocess:
 
         # Find article author/s
         for refs in possible_author_refs:
-            author = soup.find(['span', 'div', 'a', 'p'], class_ = refs, recursive = True)
+            author = soup.find(['div', 'span', 'a', 'p'], class_ = refs, recursive = True)
             if author:
                 author = WebsitePreprocess.textCleaner(author.text)
+                author_text = ' '.join([word for word in author_text.split() if word.lower() != 'cnn'])
                 break
+            
             else:
-                author = author = soup.find(['span', 'div', 'p', 'a'], id = refs, recursive = True)
+                author = soup.find(['div', 'span', 'a', 'p'], id = refs, recursive = True)
                 if author:
                     author = WebsitePreprocess.textCleaner(author.text)
                     break
                 else:
                     author = 'No author found'
-                    break
 
         # Test for getting
         print("Title:", header, "\n")
         print("Author/s:", author)
 
-print("\nTest 1:")
 url = 'https://www.bbc.com/news/world-europe-67008199'
+print("\nTest 1: (" + url + ")")
 WebsitePreprocess.parse(url)
 
-print("\nTest 2:")
-url = 'https://www.manilatimes.net/2022/05/30/news/comelec-shuts-down-automated-poll-system/1845514'
-WebsitePreprocess.parse(url)
-
-print("\nTest 3:")
-url = 'https://newsinfo.inquirer.net/1840141/grade-5-pupil-dies-11-days-after-teacher-slapped-him-in-antipolo-city'
-WebsitePreprocess.parse(url)
-
-print("\nTest 4:")
 url = 'https://edition.cnn.com/2023/10/02/americas/un-approves-haiti-military-mission-intl/index.html'
-WebsitePreprocess.parse(url)
-
-print("\nTest 5:")
-url = 'https://edition.cnn.com/2023/10/03/asia/philippines-south-china-sea-scarborough-shoal-fishermen-dead-intl-hnk/index.html'
+print("\nTest 2: (" + url + ")")
 WebsitePreprocess.parse(url)
 
 print()
