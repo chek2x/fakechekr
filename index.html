@@ -3,20 +3,16 @@
 <head>
     <title>FakeChekr</title>
     <link rel="stylesheet" type="text/css" href="./front-end/styles.css">
-    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <py-config>
+        packages = ["numpy", "pandas", "nltk", "scikit-learn"]
+        [[fetch]]
+        from = "./server"
+        files = ["Classification.py", "TextCleaner.py", "db_fakechekr.db"]
+    </py-config>
 </head>
 <body>
-    <py-env>
-        - scikit-learn
-        - pandas
-        - numpy
-        - nltk
-    
-        - paths:
-            - /server/Classification.py
-            - /server/main.py
-            - /server/TextCleaner.py
-    </py-env>
     <py-script src="./server/main.py"></py-script>
     <form id="form" py-submit="submit_handler()">
     <center>
@@ -44,7 +40,7 @@
         </div><br>
 
         <div class="textbox" id="result_text">
-            <placeholder>Result </placeholder>
+            Results
         </div>
 
         <div class="verify-button">

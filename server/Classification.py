@@ -31,7 +31,7 @@ class NaiveBayes:
         cursor.close()
 
         data['legit'] = data['legit'].str.rstrip('\r')
-        data['combined_text'] = data['link'] + " " + data['headline'] + ' ' + data['authors'] + ' ' + data['body'] + ' ' +  + data['pub_date']
+        data['combined_text'] = data['link'] + " " + data['website'] + " " + data['headline'] + ' ' + data['authors'] + ' ' + data['body'] + ' ' +  + data['pub_date']
 
         # X represents features used for GaussianNB classifying of target label
         X_data = TfidfVectorizer().fit_transform(data['combined_text'].values)
@@ -81,7 +81,7 @@ class NaiveBayes:
         cursor.close()
 
         data['legit'] = data['legit'].str.rstrip('\r')
-        data['combined_text'] = data['link'] + " " + data['headline'] + ' ' + data['authors'] + ' ' + data['body'] + ' ' +  + data['pub_date']
+        data['combined_text'] = data['link'] + " " + data['website'] + " " + data['headline'] + ' ' + data['authors'] + ' ' + data['body'] + ' ' +  + data['pub_date']
 
         # X represents features used for GaussianNB classifying of target label
         X_data = TfidfVectorizer().fit_transform(data['combined_text'].values)
