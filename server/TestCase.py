@@ -1,13 +1,8 @@
 from Classification import NaiveBayes
-import mysql.connector
+import sqlite3
 
 # Connect to MySQL Database
-conn = mysql.connector.connect(
-    host = "localhost",
-    user = "root",
-    password = "NewPassword",
-    database = "db_fakechekr"
-)
+conn = sqlite3.connect("db_fakechekr.db")
 cursor = conn.cursor()
 
 # Initiate NaiveBayes local class
@@ -26,6 +21,7 @@ information = {
 result = nb.classify(information)
 print("Test Case 1:", result)
 
+# Inserts information to the articles table in db_fakechekr
 cursor.execute("INSERT INTO articles (link, website, headline, authors, body, pub_date, legit) VALUES (\""
                + information['link'] + "\", \""
                + information['website'] + "\", \""
@@ -49,6 +45,7 @@ information = {
 result = nb.classify(information)
 print("Test Case 2:", result)
 
+# Inserts information to the articles table in db_fakechekr
 cursor.execute("INSERT INTO articles (link, website, headline, authors, body, pub_date, legit) VALUES (\""
                + information['link'] + "\", \""
                + information['website'] + "\", \""
