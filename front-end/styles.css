@@ -21,14 +21,20 @@ body {
 
 .logo {
     width: 200px;
-    height: auto;
     margin: 0;
+    left: 50%;
+    top: -10px;
+    position: absolute;
+    transform: translateX(-50%);
+    transition: left 0.5s ease;
 }
 
 .search-bar {
     background-color: transparent;
     padding: 5px;
     margin: 5px;
+    transition: all 0.5s ease; /* Smooth transition effect */
+    text-align: center;
 }
 
 .search-input {
@@ -40,6 +46,7 @@ body {
 
 .verify-button {
     text-align: center;
+    transition: all 0.5s ease;
 }
 
 #verify-button {
