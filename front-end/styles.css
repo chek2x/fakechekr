@@ -68,3 +68,15 @@ body {
 #verify-button:hover {
     background-color: #ccc;
 }
+.textbox {
+    width: 200px;
+    height: 30px;
+    padding: 20px;
+    border: 5px solid #000000;
+    border-radius: 5px;
+    position: absolute; /* Position the text box absolutely */
+    right: 0%; /* Adjust the right distance as needed */
+    top: 50%; /* Position vertically at the center */
+    opacity: 0; /* Start with 0 opacity */
+    transition: opacity 0.5s;
+}

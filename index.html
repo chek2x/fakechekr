@@ -28,9 +28,15 @@
             <input type="text" placeholder="Publish Date" class="search-input" id="date_search">
         </div><br>
 
+        <div class="textbox" id="result_text">
+            <placeholder>Result </placeholder>
+        </div>
+
         <div class="verify-button">
             <button id="verify-button">Verify</button>
         </div>
+
+        
     </center>
     <script>
         document.getElementById('verify-button').addEventListener('click', function() {
@@ -53,15 +59,11 @@
                         const button = document.querySelector('.verify-button');
                         setTimeout(() => {
                             button.style.transform = 'translateX(-34%)';
-                            const textElement = document.createElement('div');
-                            textElement.textContent = 'Yes/No';
-                            textElement.style.position = 'absolute';
-                            textElement.style.top = '50%';
-                            textElement.style.right = '20%';
-                            textElement.style.transform = 'translateY(-50%)';
-                            textElement.style.fontSize = '18px';
-                            textElement.style.color = 'black';
-                            document.body.appendChild(textElement);
+                            const textbox = document.getElementById('result_text');
+                            textbox.style.display = 'block';
+                            setTimeout(() => {
+                                textbox.style.opacity = '1';
+                            }, 100);
                             }, 200);
                     }
                 }, 200 * (index + 1)); // Adjust the delay as needed for a staggered effect
