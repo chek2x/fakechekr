@@ -1,4 +1,5 @@
 from Classification import NaiveBayes
+from TextCleaner import TextCleaner
 import sqlite3
 
 # Connect to MySQL Database
@@ -46,3 +47,4 @@ Element("headline_search").element.oninput = headline_input_handler
 Element("authors_search").element.oninput = author_input_handler
 Element("body_search").element.oninput = body_input_handler
 Element("date_search").element.oninput = date_input_handler
+Element("form").element.onsubmit = submit_handler

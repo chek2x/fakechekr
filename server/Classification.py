@@ -59,12 +59,7 @@ class NaiveBayes:
     
     def algoInfo():
         # Connect to MySQL Database
-        conn = mysql.connector.connect(
-            host = "localhost",
-            user = "root",
-            password = "NewPassword",
-            database = "db_fakechekr"
-        )
+        conn = sqlite3.connect('db_fakechekr.db')
 
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM articles")
@@ -86,7 +81,7 @@ class NaiveBayes:
         cursor.close()
 
         data['legit'] = data['legit'].str.rstrip('\r')
-        data['combined_text'] = data['link'] + " " + data['headline'] + ' ' + data['authors'] + ' ' + data['body'] + ' ' +  + data['pub_date'].apply(lambda x: x.strftime('%Y-%m-%d'))
+        data['combined_text'] = data['link'] + " " + data['headline'] + ' ' + data['authors'] + ' ' + data['body'] + ' ' +  + data['pub_date']
 
         # X represents features used for GaussianNB classifying of target label
         X_data = TfidfVectorizer().fit_transform(data['combined_text'].values)

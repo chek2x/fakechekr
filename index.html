@@ -4,13 +4,21 @@
     <title>FakeChekr</title>
     <link rel="stylesheet" type="text/css" href="./front-end/styles.css">
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
-    <py-config>
-        [[fetch]]
-        files = ["db_fakechekr.db"]
-    </py-config>
 </head>
 <body>
-<<<<<<< Updated upstream
+    <py-env>
+        - scikit-learn
+        - pandas
+        - numpy
+        - nltk
+    
+        - paths:
+            - /server/Classification.py
+            - /server/main.py
+            - /server/TextCleaner.py
+    </py-env>
+    <py-script src="./server/main.py"></py-script>
+    <form id="form" py-submit="submit_handler()">
     <center>
         <div class="header">
             <img src="./front-end/images/logo.png" alt="Project Logo" class="logo">
@@ -36,9 +44,10 @@
         </div><br>
 
         <div class="verify-button">
-            <button id="verify-button">Verify</button>
+            <button type="submit" id="verify-button">Verify</button>
         </div>
     </center>
+</form>
     <script>
         document.getElementById('verify-button').addEventListener('click', function() {
             // Move the logo
@@ -75,51 +84,5 @@
             });
         });
     </script>
-=======
-    <py-env>
-        - sqlite3
-        - scikit-learn
-        - pandas
-        - numpy
-    
-        - paths:
-            - /server/Classification.py
-            - /server/main.py
-    </py-env>
-    <py-script src="./server/main.py"></py-script>
-    <form>
-        <center><div class="header">
-            <img src="./front-end/images/logo.png" alt="Project Logo" class="logo">
-        </div>
-        
-        <div class="search-bar">
-            <input type="text" placeholder="Link" class="search-input" id="link_search">
-        </div>
-
-        <div class="search-bar">
-            <input type="text" placeholder="Website" class="search-input" id="website_search">
-        </div>
-
-        <div class="search-bar">
-            <input type="text" placeholder="Headline" class="search-input" id="headline_search">
-        </div>
-
-        <div class="search-bar">
-            <input type="text" placeholder="Authors" class="search-input" id="authors_search">
-        </div>
-
-        <div class="search-bar">
-            <input type="text" placeholder="Body" class="search-input" id="body_search">
-        </div>
-
-        <div class="search-bar">
-            <input type="text" placeholder="Publish Date" class="search-input" id="date_search">
-        </div><br>
-        
-        <div class="verify-button">
-            <button id="verify-button">Verify</button>
-        </center></div>
-    </form>
->>>>>>> Stashed changes
 </body>
 </html>
