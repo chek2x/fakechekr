@@ -4,36 +4,69 @@
     <link rel="stylesheet" type="text/css" href="./front-end/styles.css">
 </head>
 <body>
-    <center><div class="header">
-        <img src="./front-end/images/logo.png" alt="Project Logo" class="logo">
-    </div>
+    <center>
+        <div class="header">
+            <img src="./front-end/images/logo.png" alt="Project Logo" class="logo">
+        </div><br><br><br><br><br><br><br><br><br>
+
+        <div class="search-bar search-bar-link">
+            <input type="text" placeholder="Link" class="search-input" id="link_search">
+        </div>
+        <div class="search-bar search-bar-website">
+            <input type="text" placeholder="Website" class="search-input" id="website_search">
+        </div>
+        <div class="search-bar search-bar-headline">
+            <input type="text" placeholder="Headline" class="search-input" id="headline_search">
+        </div>
+        <div class="search-bar search-bar-authors">
+            <input type="text" placeholder="Authors" class="search-input" id="authors_search">
+        </div>
+        <div class="search-bar search-bar-body">
+            <input type="text" placeholder="Body" class="search-input" id="body_search">
+        </div>
+        <div class="search-bar search-bar-date">
+            <input type="text" placeholder="Publish Date" class="search-input" id="date_search">
+        </div><br>
+
+        <div class="verify-button">
+            <button id="verify-button">Verify</button>
+        </div>
+    </center>
+    <script>
+        document.getElementById('verify-button').addEventListener('click', function() {
+            // Move the logo
+            const logo = document.querySelector('.logo');
+            logo.style.transform = 'translate(0%)';
+            logo.style.left = '100px'; // Adjust the final position as needed
     
-    <div class="search-bar">
-        <input type="text" placeholder="Link" class="search-input" id="link_search">
-    </div>
-
-    <div class="search-bar">
-        <input type="text" placeholder="Website" class="search-input" id="website_search">
-    </div>
-
-    <div class="search-bar">
-        <input type="text" placeholder="Headline" class="search-input" id="headline_search">
-    </div>
-
-    <div class="search-bar">
-        <input type="text" placeholder="Authors" class="search-input" id="authors_search">
-    </div>
-
-    <div class="search-bar">
-        <input type="text" placeholder="Body" class="search-input" id="body_search">
-    </div>
-
-    <div class="search-bar">
-        <input type="text" placeholder="Publish Date" class="search-input" id="date_search">
-    </div><br>
+            // Move and show the search bars
+            const searchBars = document.querySelectorAll('.search-bar');
+            searchBars.forEach((searchBar, index) => {
+                setTimeout(() => {
+                    searchBar.style.opacity = '1';
+                    searchBar.style.transform = 'translateX(-34%)';
+                    searchBar.style.display = 'block';
     
-    <div class="verify-button">
-        <button id="verify-button">Verify</button>
-    </center></div>
+                    // Check if this is the last search bar
+                    if (index === searchBars.length - 1) {
+                        // Move the button after the last search bar
+                        const button = document.querySelector('.verify-button');
+                        setTimeout(() => {
+                            button.style.transform = 'translateX(-34%)';
+                            const textElement = document.createElement('div');
+                            textElement.textContent = 'Yes/No';
+                            textElement.style.position = 'absolute';
+                            textElement.style.top = '50%';
+                            textElement.style.right = '20%';
+                            textElement.style.transform = 'translateY(-50%)';
+                            textElement.style.fontSize = '18px';
+                            textElement.style.color = 'black';
+                            document.body.appendChild(textElement);
+                            }, 200);
+                    }
+                }, 200 * (index + 1)); // Adjust the delay as needed for a staggered effect
+            });
+        });
+    </script>
 </body>
 </html>
