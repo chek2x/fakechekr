@@ -4,6 +4,7 @@ body {
     padding: 0;
     background-color: #8EB897;
     text-align: center;
+    
 }
 
 .center {
@@ -35,12 +36,11 @@ body {
     margin: 5px;
     transition: all 0.5s ease; /* Smooth transition effect */
     text-align: center;
+    border: 2px;
 }
-
 .search-input {
     width: 30%;
     padding: 10px;
-    border: none;
     border-radius: 5px;
 }
 
@@ -75,8 +75,25 @@ body {
     border: 5px solid #000000;
     border-radius: 5px;
     position: absolute; /* Position the text box absolutely */
-    right: 0%; /* Adjust the right distance as needed */
+    right: 10%; /* Adjust the right distance as needed */
     top: 50%; /* Position vertically at the center */
     opacity: 0; /* Start with 0 opacity */
     transition: opacity 0.5s;
+    background: #fff;
+    font-family: Montserrat, sans-serif;;
+    font-size: 24px;
+    line-height: 20px;
+    font-weight: bold;
+    color: #000000;
+    padding: 40px;
+    box-shadow:
+        inset #040404 0 0 0 5px, 
+        inset #2f2f2f 0 0 0 1px, 
+        inset rgb(104, 104, 104) 0 0 0 10px, 
+        inset #949494 0 0 0 11px, 
+        inset #b3b3b3 0 0 0 16px, 
+        inset #d5d5d5 0 0 0 17px, 
+        inset #dedede 0 0 0 21px, 
+        inset #ffffff 0 0 0 22px;
+    text-shadow: 1px 1px 1px #cfcfcf;
 }
