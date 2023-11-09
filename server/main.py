@@ -9,6 +9,7 @@ cursor = conn.cursor()
 
 # Initiate NaiveBayes local class
 nb = NaiveBayes()
+tc = TextCleaner()
 
 form_values = {
     "link" : "",
@@ -22,11 +23,20 @@ form_values = {
 def submit_handler(event = None):
     if event:
         event.preventDefault()
-
+        # Do not accept if requirements are blank
         if Element("link_search").element.value == "" or Element("website_search").element.value == "":
             return False
         else:
+            # Cleaning
+            # form_values["website"] = form_values["website"].lower()
+            # form_values["headline"] = tc.clean_text(form_values["headline"])
+            # form_values["author"] = tc.clean_text(form_values["author"])
+            # form_values["body"] = tc.clean_text(form_values["body"])
+
+            # Classification
             result = nb.classify(form_values)
+
+            # Insert information to SQLite 
             cursor.execute("INSERT INTO articles (link, website, headline, authors, body, pub_date, legit) VALUES (\""
                     + form_values['link'] + "\", \""
                     + form_values['website'] + "\", \""
@@ -36,7 +46,10 @@ def submit_handler(event = None):
                     + form_values['pub_date'] + "\", \""
                     + result + "\")")
             conn.commit()
-            Element('result_text').element.value = f"Result: {result}"
+
+            # Display result
+            display(f"{result.upper()}", target='result_text')
+ 
             return True
     
 def link_input_handler(event = None):
@@ -69,6 +82,7 @@ def date_input_handler(event = None):
         event.preventDefault()
         form_values['pub_date'] = Element("date_search").element.value
 
+# Mapping
 Element("link_search").element.oninput = link_input_handler
 Element("website_search").element.oninput = website_input_handler
 Element("headline_search").element.oninput = headline_input_handler

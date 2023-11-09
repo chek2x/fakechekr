@@ -1,12 +1,14 @@
 from Classification import NaiveBayes
+from TextCleaner import TextCleaner
 import sqlite3
 
 # Connect to MySQL Database
-conn = sqlite3.connect("db_fakechekr.db")
+conn = sqlite3.connect("./server/db_fakechekr.db")
 cursor = conn.cursor()
 
 # Initiate NaiveBayes local class
 nb = NaiveBayes()
+tc = TextCleaner()
 
 # Test Case 1
 information = {
@@ -18,19 +20,20 @@ information = {
     "pub_date" : "2023-11-07"
 }
 
+information['body'] = tc.clean_text(information['body'])
 result = nb.classify(information)
-print("Test Case 1:", result)
+print("Test Case 1:", result, "\nCleaned text:", information['body'])
 
 # Inserts information to the articles table in db_fakechekr
-cursor.execute("INSERT INTO articles (link, website, headline, authors, body, pub_date, legit) VALUES (\""
-               + information['link'] + "\", \""
-               + information['website'] + "\", \""
-               + information['headline'] + "\", \""
-               + information['author'] + "\", \""
-               + information['body'] + "\", \""
-               + information['pub_date'] + "\", \""
-               + result + "\")")
-conn.commit()
+# cursor.execute("INSERT INTO articles (link, website, headline, authors, body, pub_date, legit) VALUES (\""
+#                + information['link'] + "\", \""
+#                + information['website'] + "\", \""
+#                + information['headline'] + "\", \""
+#                + information['author'] + "\", \""
+#                + information['body'] + "\", \""
+#                + information['pub_date'] + "\", \""
+#                + result + "\")")
+# conn.commit()
 
 # Test Case 2
 information = {
@@ -42,18 +45,19 @@ information = {
     "pub_date" : "0001-01-01"
 }
 
+information['body'] = tc.clean_text(information['body'])
 result = nb.classify(information)
-print("Test Case 2:", result)
+print("Test Case 2:", result, "\nCleaned text:", information['body'])
 
 # Inserts information to the articles table in db_fakechekr
-cursor.execute("INSERT INTO articles (link, website, headline, authors, body, pub_date, legit) VALUES (\""
-               + information['link'] + "\", \""
-               + information['website'] + "\", \""
-               + information['headline'] + "\", \""
-               + information['author'] + "\", \""
-               + information['body'] + "\", \""
-               + information['pub_date'] + "\", \""
-               + result + "\")")
-conn.commit()
+# cursor.execute("INSERT INTO articles (link, website, headline, authors, body, pub_date, legit) VALUES (\""
+#                + information['link'] + "\", \""
+#                + information['website'] + "\", \""
+#                + information['headline'] + "\", \""
+#                + information['author'] + "\", \""
+#                + information['body'] + "\", \""
+#                + information['pub_date'] + "\", \""
+#                + result + "\")")
+# conn.commit()
 
 cursor.close()

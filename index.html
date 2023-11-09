@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="script.js"></script>
     <title>FakeChekr</title>
     <link rel="stylesheet" type="text/css" href="./front-end/styles.css">
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <script defer src="./front-end/script.js"></script>
     <py-config>
-        packages = ["numpy", "pandas", "nltk", "scikit-learn"]
+        packages = ["numpy", "pandas", "sqlite3", "scikit-learn"]
         [[fetch]]
         from = "./server"
         files = ["Classification.py", "TextCleaner.py", "db_fakechekr.db"]
@@ -22,10 +22,10 @@
         </div><br><br><br><br><br><br><br><br><br>
 
         <div class="search-bar search-bar-link">
-            <input type="text" placeholder="Link" class="search-input" id="link_search">
+            <input type="text" placeholder="Link*" class="search-input" id="link_search">
         </div>
         <div class="search-bar search-bar-website">
-            <input type="text" placeholder="Website" class="search-input" id="website_search">
+            <input type="text" placeholder="Website*" class="search-input" id="website_search">
         </div>
         <div class="search-bar search-bar-headline">
             <input type="text" placeholder="Headline" class="search-input" id="headline_search">
@@ -41,14 +41,12 @@
         </div><br>
 
         <div class="textbox" id="result_text">
-            Results
+            Is this legit:
         </div>
 
         <div class="verify-button">
             <button type="submit" id="verify-button">Verify</button>
         </div>
-
-        
     </center>
 </form>
 </body>
