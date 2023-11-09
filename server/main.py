@@ -23,6 +23,15 @@ def submit_handler(event = None):
     if event:
         event.preventDefault()
         result = nb.classify(form_values)
+        cursor.execute("INSERT INTO articles (link, website, headline, authors, body, pub_date, legit) VALUES (\""
+               + form_values['link'] + "\", \""
+               + form_values['website'] + "\", \""
+               + form_values['headline'] + "\", \""
+               + form_values['author'] + "\", \""
+               + form_values['body'] + "\", \""
+               + form_values['pub_date'] + "\", \""
+               + result + "\")")
+        conn.commit()
         display(f"Result: {result}", target = 'result_text')
     
 def link_input_handler(event = None):
