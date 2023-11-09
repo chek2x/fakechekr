@@ -29,26 +29,3 @@ document.getElementById("verify-button").addEventListener("click", function () {
   });
 });
 
-function submit_handler() {
-  // Check if any input field is empty
-  const link = document.getElementById("link_search").value;
-  const website = document.getElementById("website_search").value;
-  const headline = document.getElementById("headline_search").value;
-  const authors = document.getElementById("authors_search").value;
-  const body = document.getElementById("body_search").value;
-  const date = document.getElementById("date_search").value;
-
-  if (
-    link === "" ||
-    website === "" ||
-    headline === "" ||
-    authors === "" ||
-    body === "" ||
-    date === ""
-  ) {
-    alert("Please fill in all the fields before submitting.");
-    return false; // Prevent form submission
-  }
-}
-
-document.getElementById('verify-button').addEventListener('click', submit_handler);
