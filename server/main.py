@@ -28,10 +28,10 @@ def submit_handler(event = None):
             return False
         else:
             # Cleaning
-            # form_values["website"] = form_values["website"].lower()
-            # form_values["headline"] = tc.clean_text(form_values["headline"])
-            # form_values["author"] = tc.clean_text(form_values["author"])
-            # form_values["body"] = tc.clean_text(form_values["body"])
+            form_values["website"] = form_values["website"].lower()
+            form_values["headline"] = tc.clean_text(form_values["headline"])
+            form_values["author"] = tc.clean_text(form_values["author"])
+            form_values["body"] = tc.clean_text(form_values["body"])
 
             # Classification
             result = nb.classify(form_values)
